@@ -1,0 +1,14 @@
+{
+  "name": "saliens-status-bot",
+  "version": "1.0.0",
+  "description": "Saliens Steam Summer Sale Planet Status Helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@seefly",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
