@@ -4,6 +4,7 @@ const https = require('https');
 const URL = 'https://wrya.net/tmp/salien-status/';
 
 function process(data, msg, args) {
+  let finalMsg = '';
   for (let i = 1; i <= 5; i++) {
     let planet = data.split('<div class=\"planet\">')[i];
     let title = planet.split('<tr>')[1].split('>')[1].split('<')[0];
@@ -13,11 +14,10 @@ function process(data, msg, args) {
     let zonesMedium = planet.split('<tr>')[15].split('</td>')[1].split('<br>')[1];
     let zonesHard = planet.split('<tr>')[15].split('</td>')[2].split('<br>')[1];
     progress = Number(Math.round(Number(progress)+'e2')+'e-2').toFixed(2);
-    let reversePlStMsg = '**PROGRESS**' + ' *' + progress + '%* || **NAME**' + ' *' + title + '*\n' + '**COMPLETED**' + ' *' + zonesTotal + '*  (**HARD**' + ' *' + zonesHard + '*)'; 
-    
-    //let planetStatusMessage = '**Name:** *' + title.substring(0, 15) + '* || **current progress:** *' + progress + '*'; 
-    msg.channel.send(reversePlStMsg);
+    finalMsg += '\n-\n**PROGRESS**' + ' *' + progress + '%* || **NAME**' + ' *' + title + '*\n' + '**COMPLETED**' + ' *' + zonesTotal + '*  (**HARD**' + ' *' + zonesHard + '*)'; 
   }
+    //let planetStatusMessage = '**Name:** *' + title.substring(0, 15) + '* || **current progress:** *' + progress + '*'; 
+    msg.channel.send(finalMsg);
 }
 
 function getPlanetsStatus(URL, msg, args) {
