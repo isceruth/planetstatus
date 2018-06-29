@@ -9,3 +9,7 @@ Bot created for easy check of Steam Summer Sale game progress via Discord (witho
 - [ ] LINTER!
 - [x] Add ETA
 - [x] Add high/medium info
+
+## Example
+
+![chat image](example.png)
