@@ -21,10 +21,14 @@ function process(data, msg, args) {
     }
     
     progress = Number(Math.round(Number(progress)+'e2')+'e-2').toFixed(2);
-    finalMsg += ':earth_americas:' + ' **' + title + ' ** || ' + ':hammer:' + ' *' + progress + '%* || :hourglass_flowing_sand: *ETA:* **' + hours + 'h ' + minutes + 'm**\n';
-    //if (zonesHard[1] === zonesHard[0] && zonesMedium[1] === zonesMedium[0]) {
-    //  finalMsg += 'Only easy tiles left! **ETA** ' + eta + 'm\n'; 
-    //}
+    finalMsg += ':earth_americas:' + ' **' + title + ' ** || ' + ':hammer:' + ' *' + progress + '%* || :hourglass_flowing_sand:*ETA:* **' + hours + 'h ' + minutes + 'm**\n:map: ';
+    if (zonesHard[1] === zonesHard[0] && zonesMedium[1] === zonesMedium[0]) {
+      finalMsg += `***${zonesEasy[1] - zonesEasy[0]} easy** tiles left!*\n`; 
+    } else if (zonesHard[1] === zonesHard[0]) {
+      finalMsg += `***${zonesMedium[1] - zonesMedium[0]} medium** tiles left!*\n`;
+    } else {
+      finalMsg += `***${zonesHard[1] - zonesHard[0]} hard** tiles left!*\n`
+    }
   }
     msg.channel.send(finalMsg);
 }

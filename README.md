@@ -5,7 +5,7 @@ Bot created for easy check of Steam Summer Sale game progress via Discord (witho
 ## To-Do list
 
 - [ ] Refactor everything
-- [ ] Improve formatting
+- [x] Improve formatting
 - [ ] LINTER!
 - [x] Add ETA
-- [ ] Add high/medium info
+- [x] Add high/medium info
