@@ -10,6 +10,7 @@ client.on('ready', () => {
   console.log('ready!');
   client.user.setUsername('Orbital Reporter No.47051');
   client.user.setAvatar('./avatar.png');
+  client.user.setPresence({status: 'busy', game : {name: '.st for planets status'}})
 }); 
 
 for (const file of commandFiles) {
