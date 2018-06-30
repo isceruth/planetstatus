@@ -3,7 +3,7 @@
 const https = require('https');
 const URL = 'https://wrya.net/tmp/salien-status/';
 
-function process(data, msg, args) {
+function process(data, msg, args, bot) {
   let finalMsg = '';
   for (let i = 1; i <= 5; i++) {
     let planet = data.split('<div class=\"planet\">')[i];
@@ -30,16 +30,17 @@ function process(data, msg, args) {
       finalMsg += `***${zonesHard[1] - zonesHard[0]} hard** tiles left!*\n`
     }
   }
+    if (bot.lastMessage) bot.lastMessage.delete();
     msg.channel.send(finalMsg);
 }
 
-function getPlanetsStatus(URL, msg, args) {
+function getPlanetsStatus(URL, msg, args, bot) {
   https.get(URL, (res) => {
     let data = '';
       res.on('data', (chunk) => {
         data += chunk;
       });
-      res.on('end', () => process(data, msg, args));
+      res.on('end', () => process(data, msg, args, bot));
   }).on('error', () => {}
   );
 }
@@ -48,8 +49,8 @@ module.exports = {
   name: 'status',
   aliases: ['st'],
   description: 'Planet status!',
-  execute(message, args) {
-    getPlanetsStatus(URL, message, args);
+  execute(message, args, bot) {
+    getPlanetsStatus(URL, message, args, bot);
     
   },
 };
